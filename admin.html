@@ -8,9 +8,9 @@
 <div id="loginView" class="login-view">
  <form id="loginForm" class="login-card">
   <div class="admin-logo">إ</div><h1>لوحة إدارة إبراق</h1><p>تسجيل دخول الإدارة</p>
-  <input id="loginUser" placeholder="اسم المستخدم" autocomplete="username" required>
+  <input id="loginUser" type="email" placeholder="بريد الأدمن الإلكتروني" autocomplete="username" required>
   <input id="loginPass" type="password" placeholder="كلمة المرور" autocomplete="current-password" required>
-  <button>دخول</button><small>الافتراضي: admin / admin123</small><div id="loginError"></div>
+  <button>دخول</button><small>سجّل بحساب الأدمن الذي تنشئه في Supabase Authentication</small><div id="loginError"></div>
  </form>
 </div>
 
@@ -20,6 +20,7 @@
   <nav>
    <button class="nav active" data-tab="dashboard">الرئيسية</button>
    <button class="nav" data-tab="products">المنتجات</button>
+   <button class="nav" data-tab="orders">الطلبات</button>
    <button class="nav" data-tab="categories">الأقسام</button>
    <button class="nav" data-tab="ads">الإعلانات</button>
    <button class="nav" data-tab="settings">إعدادات الموقع</button>
@@ -31,19 +32,25 @@
  </aside>
 
  <main>
-  <header><div><h2 id="pageTitle">الرئيسية</h2><p>كل التعديلات تنحفظ مباشرة في هذا المتصفح.</p></div><button id="saveAll" class="save">حفظ الكل</button></header>
+  <header><div><h2 id="pageTitle">الرئيسية</h2><p>المنتجات والصور والطلبات محفوظة أونلاين في Supabase.</p></div><button id="saveAll" class="save">حفظ إعدادات الموقع</button></header>
 
   <section id="dashboard" class="tab active">
    <div class="stats">
     <div><b id="statProducts">0</b><span>المنتجات</span></div><div><b id="statAds">0</b><span>الإعلانات</span></div><div><b id="statCats">0</b><span>الأقسام</span></div><div><b id="statStock">0</b><span>المخزون الكلي</span></div>
    </div>
-   <div class="panel"><h3>معلومات مهمة</h3><p>هذه النسخة تعمل بدون سيرفر وتحفظ البيانات داخل المتصفح نفسه. حتى تظهر نفس البيانات على كل الهواتف وتبقى محفوظة أونلاين، تحتاج ربطها لاحقاً بـ Supabase.</p></div>
+   <div class="panel"><h3>حالة الربط</h3><p id="cloudStatus">جاري فحص Supabase...</p></div>
    <div class="panel"><h3>نسخة احتياطية</h3><div class="row"><button id="exportBtn">تصدير البيانات</button><label class="file-btn">استيراد البيانات<input id="importInput" type="file" accept=".json"></label><button id="resetBtn" class="danger">استعادة البيانات الافتراضية</button></div></div>
   </section>
 
   <section id="products" class="tab">
    <div class="section-top"><h3>إدارة المنتجات</h3><button id="addProduct">+ إضافة منتج</button></div>
    <div id="productsAdmin" class="cards-list"></div>
+  </section>
+
+
+  <section id="orders" class="tab">
+   <div class="section-top"><h3>الطلبات</h3><button id="refreshOrders">تحديث</button></div>
+   <div id="ordersAdmin" class="cards-list"></div>
   </section>
 
   <section id="categories" class="tab">
@@ -69,11 +76,7 @@
   </section>
 
   <section id="security" class="tab">
-   <form id="securityForm" class="panel form-grid">
-    <label>اسم مستخدم الإدارة<input name="username"></label>
-    <label>كلمة مرور جديدة<input name="password" type="password"></label>
-    <p class="wide warning">هذه حماية مناسبة للمعاينة المحلية فقط. الحماية الحقيقية عند النشر تحتاج نظام دخول وقاعدة بيانات.</p>
-   </form>
+   <div class="panel"><h3>الدخول الآمن</h3><p>حساب الإدارة يُدار من Supabase Authentication. لتغيير كلمة المرور استخدم صفحة Authentication داخل Supabase.</p></div>
   </section>
 
   <section id="homepage" class="tab">
@@ -130,5 +133,5 @@
 
 <div id="editorModal" class="modal hidden"><div class="modal-card"><button id="closeEditor" class="x">✕</button><h3 id="editorTitle"></h3><form id="editorForm" class="form-grid"></form></div></div>
 <div id="toast" class="toast"></div>
-<script src="store.js"></script><script src="admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="supabase-bridge.js"></script><script src="store.js"></script><script src="admin.js"></script>
 </body></html>

@@ -61,6 +61,22 @@ function loadStore(){
   localStorage.setItem(STORE_KEY,JSON.stringify(defaultStore));
   return JSON.parse(JSON.stringify(defaultStore));
 }
-function saveStore(data){ localStorage.setItem(STORE_KEY,JSON.stringify(data)); }
-function loadCart(){ try{return JSON.parse(localStorage.getItem(CART_KEY))||[]}catch(e){return[]} }
-function saveCart(data){localStorage.setItem(CART_KEY,JSON.stringify(data))}
+function saveStore(data){
+  try{
+    localStorage.setItem(STORE_KEY,JSON.stringify(data));
+    return {ok:true};
+  }catch(error){
+    console.error("IBRAQ save failed",error);
+    return {ok:false,error};
+  }
+}
+function loadCart(){
+  try{
+    const data=JSON.parse(localStorage.getItem(CART_KEY));
+    return Array.isArray(data)?data:[];
+  }catch(e){return[]}
+}
+function saveCart(data){
+  try{localStorage.setItem(CART_KEY,JSON.stringify(data));return true}
+  catch(error){console.error("IBRAQ cart save failed",error);return false}
+}

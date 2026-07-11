@@ -6,3 +6,12 @@ main{padding:25px;width:min(1300px,100%)}header{display:flex;justify-content:spa
 
 .subtext{color:var(--muted);margin:4px 0}.homepage-editor{display:grid;grid-template-columns:minmax(360px,520px) 1fr;gap:16px;align-items:start}.editor-controls{max-height:calc(100vh - 140px);overflow:auto;padding-left:4px}.no-margin{margin-top:0}.group-title{margin:8px 0 0;padding-top:15px;border-top:1px solid #34283f;color:#e7d7f4}.preview-wrap{position:sticky;top:18px;background:#0d0912;border:1px solid #2f2338;border-radius:18px;overflow:hidden}.preview-bar{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;background:#181220;border-bottom:1px solid #2f2338}.preview-bar a{color:#c4a7ff;text-decoration:none}.preview-wrap iframe{width:100%;height:calc(100vh - 150px);border:0;background:#fff}.homepage-editor input[type="file"]{padding:9px}.section-top .row button{border:0;background:#7c3aed;color:#fff;padding:11px 15px;border-radius:11px;cursor:pointer;font-weight:800}
 @media(max-width:1050px){.homepage-editor{grid-template-columns:1fr}.editor-controls{max-height:none}.preview-wrap{position:static}.preview-wrap iframe{height:700px}}
+
+/* Polished admin refinements */
+body{background:linear-gradient(180deg,#0d0912,#120d19)}
+.panel,.stats div,.admin-card,.mini-card{box-shadow:0 12px 30px rgba(0,0,0,.16)}
+.admin-card{transition:border-color .15s ease}.admin-card:hover{border-color:#5a3e6e}
+input:focus,textarea:focus,select:focus{outline:2px solid rgba(124,58,237,.35);border-color:#7c3aed!important}
+.save,.section-top button,#exportBtn,.file-btn{box-shadow:0 8px 18px rgba(124,58,237,.2)}
+.card-actions button{font-weight:700}
+@media(max-width:850px){aside{position:sticky;top:0;z-index:10;height:auto;padding:12px}nav{padding-bottom:3px}main{width:100%}}
